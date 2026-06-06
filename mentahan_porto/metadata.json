@@ -1,6 +1,0 @@
-{
-  "name": "Neo Brutalist Dark Portfolio",
-  "description": "A personal portfolio website with Neo Brutalism Dark aesthetics built using Vue 3 and Tailwind CSS.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
