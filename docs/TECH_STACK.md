@@ -1,49 +1,85 @@
 # Tech Stack Documentation
 
-## Teknologi
+## Ringkasan
 
-### Vue.js 3
-Frontend framework utama untuk semua section portfolio.
+Portfolio ini dibangun sebagai static frontend dengan Vue 3, Vite, Tailwind CSS, dan TypeScript. Data portfolio mayoritas disimpan secara lokal, sedangkan project repository diambil dari GitHub REST API.
 
-### Vite 8
-Build tool dan development server.
+## Core Stack
 
-### Tailwind CSS 4
-Utility-first styling dan responsive layout.
+| Teknologi | Peran |
+| --- | --- |
+| Vue 3 | Framework utama untuk component-based UI |
+| Vite | Development server dan production bundler |
+| TypeScript | Type safety untuk data, service, dan komponen |
+| Tailwind CSS 4 | Utility-first styling dan responsive layout |
+| Axios | HTTP client untuk GitHub REST API |
+| Lucide Icons | Icon library untuk navbar, cards, footer, dan tombol |
 
-### TypeScript 6
-Type safety untuk data, services, dan Vue components.
+## Browser APIs
 
-### Axios
-Dipakai oleh `src/services/githubService.ts` untuk mengambil data repository dari GitHub API.
+| API | Peran |
+| --- | --- |
+| `localStorage` | Menyimpan preferensi dark/light theme |
+| `IntersectionObserver` | Menjalankan animasi reveal saat section masuk viewport |
+| `window.scrollTo` | Smooth scroll untuk tombol kembali ke atas |
 
-### GitHub REST API
-Dipakai di section Projects untuk mengambil public repositories dari username GitHub.
-
-### Static Data
-Data profil, skills, education, dan certificates disimpan langsung di `src/data/`.
-
-### Lucide Icons
-Icon library untuk tombol, cards, navbar, footer, dan section UI.
-
-### localStorage
-Menyimpan preferensi dark/light theme.
-
-### IntersectionObserver
-Dipakai untuk animasi reveal saat section masuk viewport.
-
-## Arsitektur Singkat
+## Project Structure
 
 ```text
-Browser
-  |
-  +-- Vue 3 + Vite
-  |     |
-  |     +-- Components
-  |     +-- Composables
-  |     +-- Static data: src/data/*
-  |
-  +-- GitHub REST API
-        |
-        +-- ProjectsSection
+src/
+  assets/
+    main.css
+  components/
+    *.vue
+  composables/
+    useTheme.ts
+    useIntersectionObserver.ts
+  data/
+    profile.ts
+    skills.ts
+    certifications.ts
+    experience.ts
+    education.ts
+  services/
+    githubService.ts
+  types/
+    index.ts
+  App.vue
+  main.ts
+```
+
+## Data Flow
+
+```text
+Static data in src/data/
+  -> Vue components
+  -> Rendered portfolio sections
+
+GitHub username from VITE_GITHUB_USERNAME
+  -> githubService.ts
+  -> GitHub REST API
+  -> ProjectsSection.vue
+```
+
+## Architecture Notes
+
+- Aplikasi tidak memakai backend custom.
+- Routing dibuat sebagai single-page section navigation.
+- Data portfolio lokal diketik melalui interface di `src/types/index.ts`.
+- GitHub API hanya dipakai untuk public repository.
+- Theme state dipisahkan ke composable `useTheme.ts`.
+- Reveal animation dipisahkan ke composable `useIntersectionObserver.ts`.
+
+## Build Output
+
+Build production dibuat oleh Vite:
+
+```bash
+npm run build
+```
+
+Output siap deploy berada di:
+
+```text
+dist/
 ```

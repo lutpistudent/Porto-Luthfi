@@ -6,6 +6,8 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
+const whatsappPhone = profile.contact.phone.replace(/\D/g, '')
+
 const contactItems = [
   {
     label: 'Email',
@@ -22,7 +24,7 @@ const contactItems = [
   {
     label: 'Phone',
     value: profile.contact.phone,
-    href: `tel:${profile.contact.phone}`,
+    href: `https://wa.me/${whatsappPhone}`,
     icon: Phone,
   },
   {
