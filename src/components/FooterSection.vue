@@ -6,13 +6,18 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
+const emailSubject = encodeURIComponent('Portfolio Contact')
+const emailBody = encodeURIComponent(
+  'Halo Luthfiansyah,\n\nSaya ingin menghubungi kamu terkait portfolio/project.\n\n'
+)
+const emailHref = `mailto:${profile.contact.email}?subject=${emailSubject}&body=${emailBody}`
 const whatsappPhone = profile.contact.phone.replace(/\D/g, '')
 
 const contactItems = [
   {
     label: 'Email',
     value: profile.contact.email,
-    href: `mailto:${profile.contact.email}`,
+    href: emailHref,
     icon: Mail,
   },
   {

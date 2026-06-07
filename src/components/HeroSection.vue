@@ -5,6 +5,11 @@ import { profile } from '@/data/profile'
 const nameParts = profile.fullName.split(' ')
 const firstName = nameParts[0] || profile.fullName
 const remainingName = nameParts.slice(1).join(' ')
+const emailSubject = encodeURIComponent('Portfolio Contact')
+const emailBody = encodeURIComponent(
+  'Halo Luthfiansyah,\n\nSaya ingin menghubungi kamu terkait portfolio/project.\n\n'
+)
+const emailHref = `mailto:${profile.contact.email}?subject=${emailSubject}&body=${emailBody}`
 
 const scrollToSection = (href: string) => {
   const el = document.querySelector(href)
@@ -110,7 +115,7 @@ const scrollToSection = (href: string) => {
             <Linkedin class="w-4 h-4" />
           </a>
           <a
-            :href="`mailto:${profile.contact.email}`"
+            :href="emailHref"
             class="p-2 border transition-all duration-200 hover-lift"
             :style="{
               borderColor: 'var(--border)',

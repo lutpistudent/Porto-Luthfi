@@ -65,7 +65,7 @@ Tujuan utamanya adalah memberi gambaran cepat tentang kemampuan teknis, gaya vis
 ### Contact
 
 - Informasi contact ditampilkan di footer.
-- Link email memakai `mailto:`.
+- Link email memakai `mailto:` dengan subject dan body awal.
 - Link GitHub dan LinkedIn membuka halaman eksternal.
 - Link phone diarahkan ke WhatsApp melalui `wa.me`.
 
